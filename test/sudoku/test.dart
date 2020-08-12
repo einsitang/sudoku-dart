@@ -1,5 +1,4 @@
-import 'package:sudoku_dart/src/sudoku/generator.dart';
-import 'package:sudoku_dart/src/sudoku/tools.dart';
+import 'package:sudoku_dart/src/sudoku_dart/tools.dart';
 import 'package:sudoku_dart/sudoku.dart' ;
 
 void main(){
@@ -17,8 +16,8 @@ void main(){
     -1,6,-1,    -1,-1,9,    -1,-1,-1,
   ];
 
-//  Sudoku sudoku = new Sudoku(puzzle: puzzle);
-//  sudoku.debug();
+//  Sudoku sudoku_dart = new Sudoku(puzzle: puzzle);
+//  sudoku_dart.debug();
 
   puzzle = Sudoku.generator(LEVEL.EXPERT);
   formatPrint(puzzle);

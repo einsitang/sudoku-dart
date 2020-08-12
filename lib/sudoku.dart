@@ -1,3 +1,3 @@
 library sudoku_dart;
 
-export 'src/sudoku/core.dart';
+export 'src/sudoku_dart/core.dart';

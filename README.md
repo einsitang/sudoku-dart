@@ -6,7 +6,7 @@ sudoku lib with dart
 
 # API
 ```dart
-import 'package:sudoku_dart/sudoku.dart';
+import 'package:sudoku_dart/sudoku_dart.dart';
 // 数独解题,一维数组,-1为待填空
   List<int> puzzle = [
     -1,-1,8,    9,-1,6,     -1,-1,5,
