@@ -1,0 +1,7 @@
+name: sudoku
+description: sudoku dart lib
+version: 0.0.1
+homepage: https://github.com/forfuns/sudoku-dart
+
+environment:
+  sdk: ">=2.1.0"
