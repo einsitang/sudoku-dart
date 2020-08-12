@@ -1,6 +1,6 @@
-import 'package:sudoku/src/sudoku/generator.dart';
-import 'package:sudoku/src/sudoku/tools.dart';
-import 'package:sudoku/sudoku.dart' ;
+import 'package:sudoku_dart/src/sudoku/generator.dart';
+import 'package:sudoku_dart/src/sudoku/tools.dart';
+import 'package:sudoku_dart/sudoku.dart' ;
 
 void main(){
   List<int> puzzle = [
