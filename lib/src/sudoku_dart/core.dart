@@ -8,16 +8,14 @@ class Sudoku {
   List<int> _puzzle;
   List<int> _answer;
   int _timecount;
-  bool _traceBackReverse = false;
   List<int> traceBackNums = shuffle(NUMS);
 
-  Sudoku({List<int> puzzle, bool traceBackReverse = false}) {
+  Sudoku(List<int> puzzle) {
     if (puzzle == null || puzzle.length != 81) {
       throw new StateError("请输入正确的数独题");
     }
 
     this._puzzle = puzzle;
-    this._traceBackReverse = traceBackReverse;
 
     List<int> answer = puzzle.sublist(0);
     List<List<bool>> rows, cols, zones;
@@ -105,5 +103,5 @@ class Sudoku {
 
   List<int> get answer => this._answer;
 
-  static List<int> generator(sudoku_generator.LEVEL level) => sudoku_generator.generator(level: level);
+  static Sudoku generator(sudoku_generator.LEVEL level) => sudoku_generator.generator(level: level);
 }

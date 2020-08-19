@@ -31,7 +31,11 @@ sudoku.puzzle;
 sudoku.answer;
 
 // 数独题面生成 ,其中LEVEL 分为 EASY(简单), MEDIUM(中等), HARD(困难), EXPERT(专家)
-puzzle = Sudoku.generator(LEVEL.EXPERT);
+Sudoku newSudoku = Sudoku.generator(LEVEL.EXPERT);
+// 查看生成的谜面
+newSudoku.puzzle;
+// 查看完整数独
+newSudoku.puzzle;
 ```
 
 # 更多

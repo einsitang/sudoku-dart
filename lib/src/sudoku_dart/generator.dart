@@ -167,7 +167,7 @@ List _buildFillRules(List<_PuzzleRule> puzzleRules) {
  * 根据填充规则生成谜题
  * @param fillRules 填充规则
  */
-List<int> _generator(List<_FillRule> fillRules) {
+Sudoku _generator(List<_FillRule> fillRules) {
   // 初始化填充记录
   List<List<bool>> rows, cols, zones;
   rows = List<List<bool>>.generate(9, (index) => List<bool>.generate(10, (index) => false));
@@ -195,7 +195,7 @@ List<int> _generator(List<_FillRule> fillRules) {
   });
 
   // 根据基准数据计算完整数独
-  Sudoku sudoku1 = new Sudoku(puzzle: basicPuzzle);
+  Sudoku sudoku1 = new Sudoku(basicPuzzle);
   List<int> answer1 = sudoku1.answer;
 
   // 挖洞
@@ -206,8 +206,8 @@ List<int> _generator(List<_FillRule> fillRules) {
 
   // 校验挖洞之后的puzzle
 
-  Sudoku testSudoku1 = new Sudoku(puzzle: puzzle);
-  Sudoku testSudoku2 = new Sudoku(puzzle:puzzle, traceBackReverse: true);
+  Sudoku testSudoku1 = new Sudoku(puzzle);
+  Sudoku testSudoku2 = new Sudoku(puzzle);
 
   List<int> testAnswer1 = testSudoku1.answer;
   List<int> testAnswer2 = testSudoku2.answer;
@@ -219,26 +219,26 @@ List<int> _generator(List<_FillRule> fillRules) {
   }
 
   // 输出校验后的题目
-  return puzzle;
+  return testSudoku1;
 }
 
 /**
  * 默认级别为:简单(LEVEL.EASY)
  */
-List<int> generator({LEVEL level = LEVEL.EASY}) {
+Sudoku generator({LEVEL level = LEVEL.EASY}) {
 
   List<_PuzzleRule> puzzleRules = _PUZZLE_RULES[level];
 
   // 构建填充规则
   var fillRules = _buildFillRules(puzzleRules);
 
-  List<int> puzzle;
+  Sudoku sudoku;
   int beginTime = DateTime.now().millisecondsSinceEpoch;
 
 //  int retryCount = 0;
-  while (puzzle == null) {
+  while (sudoku == null) {
     try {
-      puzzle = _generator(fillRules);
+      sudoku = _generator(fillRules);
     } catch (e) {
       // retry
 //      print('retryCount:${++retryCount}');
@@ -248,5 +248,5 @@ List<int> generator({LEVEL level = LEVEL.EASY}) {
   int endTime = DateTime.now().millisecondsSinceEpoch;
   print('数独题目生成耗时: ${endTime - beginTime}\'ms');
 
-  return puzzle;
+  return sudoku;
 }
