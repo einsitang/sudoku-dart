@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.0.3
+- update `Sudoku.generator` api
+
 ## 0.0.2
 - 更改包名与文件结构
 - 修正类型作用域
