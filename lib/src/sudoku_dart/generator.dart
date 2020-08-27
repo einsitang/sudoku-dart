@@ -134,7 +134,7 @@ List _buildFillRules(List<_PuzzleRule> puzzleRules) {
   List<int> distributeZones = List.generate(9, (index) => index);
   List<_FillRule> zoneRules = [];
   List<List<int>> zoneIndexes = List.generate(9, (index) {
-    return Matrix.getZoneIndexs(zone: index);
+    return Matrix.getZoneIndexes(zone: index);
   });
 
   Random random = new Random();
