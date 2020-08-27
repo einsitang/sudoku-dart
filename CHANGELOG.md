@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.0.5
+- update `tools` api , add `getRowIndexes`,`getColIndexes`
+
 ## 0.0.3
 - update `Sudoku.generator` api
 
