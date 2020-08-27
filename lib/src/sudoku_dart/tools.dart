@@ -1,22 +1,18 @@
-
 import 'dart:io';
 
 import 'dart:math';
 
 class Matrix {
-
   static int getRow(int index) => index % 9;
 
   static int getCol(int index) => index ~/ 9;
 
-  static int getZone({int index,int row, int col}) {
-    if(index == null){
-
-      if(col == null || row == null){
+  static int getZone({int index, int row, int col}) {
+    if (index == null) {
+      if (col == null || row == null) {
         throw new StateError("index or (col and row) can't be null");
       }
-
-    }else{
+    } else {
       row = getRow(index);
       col = getCol(index);
     }
@@ -28,27 +24,29 @@ class Matrix {
 
   static int getIndex(int row, int col) => col * 9 + row;
 
-  static List<int> getZoneIndexs({int zone = 0}) {
+  static List<int> getZoneIndexes({int zone = 0}) {
     List<int> rows = [0, 1, 2];
     List<int> cols = [0, 1, 2];
-    List<int> indexs = [];
+    List<int> indexes = [];
 
     cols.forEach((col) {
       rows.forEach((row) {
-        indexs.add(((col + zone ~/ 3 * 3) * 9) + (row + (zone % 3) * 3));
+        indexes.add(((col + zone ~/ 3 * 3) * 9) + (row + (zone % 3) * 3));
       });
     });
 
-    return indexs;
+    return indexes;
   }
 
+  static List<int> getColIndexes(int col) => List.generate(9, (index) => index * 9 + col);
+
+  static List<int> getRowIndexes(int row) => List.generate(9, (index) => row * 9 + index);
 }
 
-List shuffle(List list){
+List shuffle(List list) {
   var random = new Random();
-  var n,temp;
+  var n, temp;
   for (var i = list.length - 1; i > 0; i--) {
-
     // Pick a pseudorandom number according to the list length
     n = random.nextInt(i + 1);
 
@@ -59,22 +57,20 @@ List shuffle(List list){
   return list;
 }
 
-void formatPrint(List<int> arr){
+void formatPrint(List<int> arr) {
   List<List<int>> matrix = [];
   List<int> rows = [];
 
   int element;
-  for(int index=0;index<arr.length;++index){
+  for (int index = 0; index < arr.length; ++index) {
     element = arr[index];
-    if(index % 9 == 0){
+    if (index % 9 == 0) {
       stdout.writeln("\n");
-      if((index ~/ 9) % 3 == 0){
+      if ((index ~/ 9) % 3 == 0) {
         stdout.writeln();
       }
     }
-    stdout.write('${element} \t ${ (index+1) % 3 == 0 ? "\t" : ""}');
-
+    stdout.write('${element} \t ${(index + 1) % 3 == 0 ? "\t" : ""}');
   }
   stdout.writeln();
-
 }
