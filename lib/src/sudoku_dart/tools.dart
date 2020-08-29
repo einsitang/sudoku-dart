@@ -17,8 +17,8 @@ class Matrix {
       col = getCol(index);
     }
 
-    int x = row ~/ 3;
-    int y = col ~/ 3;
+    int x = col ~/ 3;
+    int y = row ~/ 3;
     return y * 3 + x;
   }
 

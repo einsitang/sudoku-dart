@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.0.8
+- fix(tools):Matrix.getZone
+
 ## 0.0.7
 - `tools.dart` 函数row和col计算错误修复
 
