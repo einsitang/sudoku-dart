@@ -3,9 +3,9 @@ import 'dart:io';
 import 'dart:math';
 
 class Matrix {
-  static int getRow(int index) => index % 9;
+  static int getRow(int index) => index ~/ 9;
 
-  static int getCol(int index) => index ~/ 9;
+  static int getCol(int index) => index % 9;
 
   static int getZone({int index, int row, int col}) {
     if (index == null) {

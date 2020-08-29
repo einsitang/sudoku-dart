@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.0.7
+- `tools.dart` 函数row和col计算错误修复
+
 ### 0.0.6
 - update `tools` api , add `getRowIndexes`,`getColIndexes`
 
