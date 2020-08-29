@@ -35,7 +35,7 @@ Sudoku newSudoku = Sudoku.generator(LEVEL.EXPERT);
 // 查看生成的谜面
 newSudoku.puzzle;
 // 查看完整数独
-newSudoku.puzzle;
+newSudoku.answer;
 ```
 
 # 更多
