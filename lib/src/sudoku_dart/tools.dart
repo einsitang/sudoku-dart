@@ -10,7 +10,7 @@ class Matrix {
   static int getZone({int index, int row, int col}) {
     if (index == null) {
       if (col == null || row == null) {
-        throw new StateError("index or (col and row) can't be null");
+        throw StateError("index or (col and row) can't be null");
       }
     } else {
       row = getRow(index);
@@ -44,7 +44,7 @@ class Matrix {
 }
 
 List shuffle(List list) {
-  var random = new Random();
+  var random = Random();
   var n, temp;
   for (var i = list.length - 1; i > 0; i--) {
     // Pick a pseudorandom number according to the list length

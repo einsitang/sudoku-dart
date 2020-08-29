@@ -7,12 +7,12 @@ final List<int> INVERSE_NUMS = NUMS.reversed.toList();
 class Sudoku {
   List<int> _puzzle;
   List<int> _answer;
-  int _timecount;
+  int _timeCount;
   List<int> traceBackNums = shuffle(NUMS);
 
   Sudoku(List<int> puzzle) {
     if (puzzle == null || puzzle.length != 81) {
-      throw new StateError("请输入正确的数独题");
+      throw StateError("请输入正确的数独题");
     }
 
     this._puzzle = puzzle;
@@ -45,11 +45,11 @@ class Sudoku {
     }
 
     if (!isSuccess) {
-      throw new StateError("数独错误，无法计算");
+      throw StateError("数独错误，无法计算");
     }
 
     this._answer = answer;
-    this._timecount = DateTime.now().millisecondsSinceEpoch - timeBegin;
+    this._timeCount = DateTime.now().millisecondsSinceEpoch - timeBegin;
   }
 
   bool _calculate(List<List<bool>> rows, List<List<bool>> cols, List<List<bool>> zones, List<int> answer, int index) {
@@ -95,7 +95,7 @@ class Sudoku {
     formatPrint(this.puzzle);
     print('answer');
     formatPrint(this.answer);
-    print('解题耗时 : ${this._timecount}\'ms');
+    print('解题耗时 : ${this._timeCount}\'ms');
     print('--- debug end ---');
   }
 

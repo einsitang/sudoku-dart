@@ -17,7 +17,7 @@ void main(){
     -1,6,-1,    -1,-1,9,    -1,-1,-1,
   ];
 
-  Sudoku sudoku_dart = new Sudoku(puzzle);
+  Sudoku sudoku_dart = Sudoku(puzzle);
   sudoku_dart.debug();
 
   // sudo generator with expert level

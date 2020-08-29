@@ -137,7 +137,7 @@ List _buildFillRules(List<_PuzzleRule> puzzleRules) {
     return Matrix.getZoneIndexes(zone: index);
   });
 
-  Random random = new Random();
+  Random random = Random();
   puzzleRules.forEach((rule) {
     List<int> indexes = [];
 
@@ -157,7 +157,7 @@ List _buildFillRules(List<_PuzzleRule> puzzleRules) {
 
       zoneCounter++;
     }
-    zoneRules.add(new _FillRule(rule.fill, rule.count, 0, indexes));
+    zoneRules.add(_FillRule(rule.fill, rule.count, 0, indexes));
   });
 
   return zoneRules;
@@ -174,7 +174,7 @@ Sudoku _generator(List<_FillRule> fillRules) {
   cols = List<List<bool>>.generate(9, (index) => List<bool>.generate(10, (index) => false));
   zones = List<List<bool>>.generate(9, (index) => List<bool>.generate(10, (index) => false));
 
-  _NumPool numPool = new _NumPool();
+  _NumPool numPool = _NumPool();
   List<int> fillIndexs = [];
   fillRules.forEach((fillRule) {
     fillIndexs.addAll(fillRule.indexes);
@@ -195,7 +195,7 @@ Sudoku _generator(List<_FillRule> fillRules) {
   });
 
   // 根据基准数据计算完整数独
-  Sudoku sudoku1 = new Sudoku(basicPuzzle);
+  Sudoku sudoku1 = Sudoku(basicPuzzle);
   List<int> answer1 = sudoku1.answer;
 
   // 挖洞
@@ -206,15 +206,15 @@ Sudoku _generator(List<_FillRule> fillRules) {
 
   // 校验挖洞之后的puzzle
 
-  Sudoku testSudoku1 = new Sudoku(puzzle);
-  Sudoku testSudoku2 = new Sudoku(puzzle);
+  Sudoku testSudoku1 = Sudoku(puzzle);
+  Sudoku testSudoku2 = Sudoku(puzzle);
 
   List<int> testAnswer1 = testSudoku1.answer;
   List<int> testAnswer2 = testSudoku2.answer;
 
   for(int i = 0 ;i<testAnswer1.length;++i){
     if (testAnswer1[i] != testAnswer2[i]) {
-      throw new StateError("retry");
+      throw StateError("retry");
     }
   }
 

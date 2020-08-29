@@ -22,7 +22,7 @@ import 'package:sudoku_dart/sudoku_dart.dart';
     -1,6,-1,    -1,-1,9,    -1,-1,-1,
   ];
 
-Sudoku sudoku = new Sudoku(puzzle: puzzle);
+Sudoku sudoku = Sudoku(puzzle: puzzle);
 // 打印调试信息
 sudoku.debug();
 // 查看原始谜面
