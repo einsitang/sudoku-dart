@@ -5,14 +5,12 @@ import 'tools.dart';
 
 enum LEVEL { EASY, MEDIUM, HARD, EXPERT }
 
-/**
- * 谜题规则
- */
+///
+/// 谜题规则
 class _PuzzleRule {
-  /**
-   * fill 为宫填充数量
-   * count 为宫数量
-   */
+
+  /// fill 为宫填充数量
+  /// count 为宫数量
   int fill, count;
 
   _PuzzleRule(int fill, int count) {
@@ -33,9 +31,8 @@ class _FillRule {
   }
 }
 
-/**
- * 不同谜题的级别规则
- */
+///
+/// 不同谜题的级别规则
 final _PUZZLE_RULES = {
   LEVEL.EASY: [
     _PuzzleRule(7, 1),
@@ -163,10 +160,9 @@ List _buildFillRules(List<_PuzzleRule> puzzleRules) {
   return zoneRules;
 }
 
-/**
- * 根据填充规则生成谜题
- * @param fillRules 填充规则
- */
+///
+/// 根据填充规则生成谜题
+/// @param fillRules 填充规则
 Sudoku _generator(List<_FillRule> fillRules) {
   // 初始化填充记录
   List<List<bool>> rows, cols, zones;
@@ -222,9 +218,8 @@ Sudoku _generator(List<_FillRule> fillRules) {
   return testSudoku1;
 }
 
-/**
- * 默认级别为:简单(LEVEL.EASY)
- */
+///
+/// 默认级别为:简单(LEVEL.EASY)
 Sudoku generator({LEVEL level = LEVEL.EASY}) {
 
   List<_PuzzleRule> puzzleRules = _PUZZLE_RULES[level];

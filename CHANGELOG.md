@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.0.9
+- update readme.md and code specification
+
 ## 0.0.8
 - fix(tools):Matrix.getZone
 
