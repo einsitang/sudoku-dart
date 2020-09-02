@@ -2,7 +2,6 @@ import 'tools.dart';
 import 'generator.dart' as sudoku_generator;
 
 final List<int> NUMS = List<int>.generate(9, (index) => index + 1);
-final List<int> INVERSE_NUMS = NUMS.reversed.toList();
 
 class Sudoku {
   List<int> _puzzle;
@@ -65,8 +64,6 @@ class Sudoku {
       return _calculate(rows, cols, zones, answer, index + 1);
     }
 
-//    List<int> nums = _traceBackReverse ? INVERSE_NUMS : NUMS;
-//    nums = shuffle(nums);
     List<int> nums = this.traceBackNums;
     for (int num in nums) {
       if (!rows[row][num] && !cols[col][num] && !zones[zone][num]) {

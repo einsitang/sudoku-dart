@@ -1,0 +1,8 @@
+name: sudoku-dart-example
+description: sudoku-dart example
+version: 0.0.1+1
+author: forfuns
+homepage: https://github.com/forfuns/sudoku-dart
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
