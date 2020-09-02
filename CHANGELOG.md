@@ -1,4 +1,6 @@
 # Changelog
+## 0.0.1
+- 更新文档结构
 
 ## 0.0.9
 - update readme.md and code specification
