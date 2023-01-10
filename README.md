@@ -1,5 +1,7 @@
 # sudoku-dart
-sudoku lib with dart
+sudoku solver and generator library with Dart
+
+this generator may not output one solution , and slowish , that will recode by next version , comming soon
 
 # 关于
 开源的数独库，支持解题与题目生成
