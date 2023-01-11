@@ -62,7 +62,7 @@ sudoku.answer;
 import 'package:sudoku_dart/sudoku_dart.dart';
 // generate random puzzle with one-solution
 // LEVEL : EASY(简单), MEDIUM(中等), HARD(困难), EXPERT(专家)
-Sudoku sudoku = Sudoku.generator(LEVEL.EXPERT);
+Sudoku sudoku = Sudoku.generate(LEVEL.EXPERT);
 ```
 
 ## more
