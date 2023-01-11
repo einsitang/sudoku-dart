@@ -1,4 +1,9 @@
 # Changelog
+## 1.0.0
+- recode solver and generator
+- easy to read code and english friendly(maybe..)
+- however , if you want to use this library , just need to know this version better than the old version
+- have good fun :-)
 ## 0.1.0
 - 更新文档结构
 

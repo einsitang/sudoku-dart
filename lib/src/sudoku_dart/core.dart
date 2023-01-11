@@ -70,7 +70,8 @@ class Sudoku {
     }
 
     if (!isSuccess) {
-      throw StateError("not found the solution. is that you give me the puzzle with mistake?");
+      throw StateError(
+          "not found the solution. is that you give me the puzzle with mistake?");
     }
 
     this._answer = answer;

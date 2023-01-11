@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'dart:math';
 
 class Matrix {
@@ -38,9 +37,11 @@ class Matrix {
     return indexes;
   }
 
-  static List<int> getColIndexes(int col) => List.generate(9, (index) => index * 9 + col);
+  static List<int> getColIndexes(int col) =>
+      List.generate(9, (index) => index * 9 + col);
 
-  static List<int> getRowIndexes(int row) => List.generate(9, (index) => row * 9 + index);
+  static List<int> getRowIndexes(int row) =>
+      List.generate(9, (index) => row * 9 + index);
 }
 
 List shuffle(List list) {
