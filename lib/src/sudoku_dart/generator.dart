@@ -28,7 +28,7 @@ Sudoku generate({LEVEL level = LEVEL.EASY}) {
 
 Sudoku _generate(int digHoleCount) {
   List<int> randCenterZoneIndexes =
-      shuffle(List.generate(9, (index) => index + 1).cast<int>());
+      shuffle(List.generate(9, (index) => index + 1)).cast<int>();
   List<int> simplePuzzle = List.generate(81, (index) => index);
   for (int i = 0; i < simplePuzzle.length; ++i) {
     if (Matrix.getZone(index: i) == 4) {
@@ -38,13 +38,13 @@ Sudoku _generate(int digHoleCount) {
     }
   }
   Sudoku sudoku = new Sudoku(simplePuzzle);
-  Sudoku generatedSudoku = _internalGenerate(sudoku.answer, digHoleCount);
+  Sudoku? generatedSudoku = _internalGenerate(sudoku.answer, digHoleCount);
   return generatedSudoku != null ? generatedSudoku : _generate(digHoleCount);
 }
 
-Sudoku _internalGenerate(List<int> digHolePuzzle, int digHoleCount) {
+Sudoku? _internalGenerate(List<int> digHolePuzzle, int digHoleCount) {
   List<int> candidateIndexes = [];
-  List<int> fixedPositions =
+  List fixedPositions =
       shuffle(List.generate(9, (index) => index).cast<int>());
   for (int i = 0; i < 81; ++i) {
     if (fixedPositions.isNotEmpty && fixedPositions.first == i) {
@@ -53,7 +53,7 @@ Sudoku _internalGenerate(List<int> digHolePuzzle, int digHoleCount) {
     }
     candidateIndexes.add(i);
   }
-  candidateIndexes = shuffle(candidateIndexes);
+  candidateIndexes = shuffle(candidateIndexes).cast<int>();
 
   int digHoleFulfill = 0;
   int old = -1, index = 0;

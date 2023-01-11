@@ -1,4 +1,6 @@
 # Changelog
+## 1.0.1
+-  support null safety
 ## 1.0.0
 - recode solver and generator
 - easy to read code and english friendly(maybe..)

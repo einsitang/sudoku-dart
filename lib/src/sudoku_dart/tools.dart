@@ -6,7 +6,7 @@ class Matrix {
 
   static int getCol(int index) => index % 9;
 
-  static int getZone({int index, int row, int col}) {
+  static int getZone({int? index, int? row, int? col}) {
     if (index == null) {
       if (col == null || row == null) {
         throw StateError("index or (col and row) can't be null");
