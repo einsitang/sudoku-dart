@@ -1,9 +1,6 @@
 # sudoku-dart
 
 
-
-
-
 ## 关于 about
 
  [![License](https://img.shields.io/badge/License-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)[![License](https://img.shields.io/badge/BSD-3-Clause.svg)](https://opensource.org/licenses/BSD-3-Clause)
@@ -72,3 +69,4 @@ Sudoku sudoku = Sudoku.generator(LEVEL.EXPERT);
 this library use on `sudoku-flutter` , support for android and iOS app  , if interesting welcome visit this repository : 
 
 [einsitang/sudoku-flutter](https://github.com/einsitang/sudoku-flutter)
+
