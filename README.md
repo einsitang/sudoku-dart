@@ -30,6 +30,7 @@ import 'package:sudoku_dart/sudoku_dart.dart';
 
 ### 解题 solver
 ```dart
+import 'package:sudoku_dart/sudoku_dart.dart';
 // 支持数独解题
 // 输入一维数组的puzzle,-1为待填空
   List<int> puzzle = [
