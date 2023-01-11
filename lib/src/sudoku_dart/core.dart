@@ -1,5 +1,5 @@
-import 'tools.dart';
 import 'generator.dart' as sudoku_generator;
+import 'tools.dart';
 
 final List<int> NUMS = List<int>.generate(9, (index) => index + 1);
 
@@ -9,7 +9,7 @@ class Sudoku {
   int _timeCount;
   List<int> traceBackNums = shuffle(NUMS);
 
-  Sudoku(List<int> puzzle) {
+  Sudoku(List<int> puzzle, {bool strict = false}) {
     if (puzzle == null || puzzle.length != 81) {
       throw StateError("请输入正确的数独题");
     }
@@ -18,9 +18,12 @@ class Sudoku {
 
     List<int> answer = puzzle.sublist(0);
     List<List<bool>> rows, cols, zones;
-    rows = List<List<bool>>.generate(81, (index) => List<bool>.generate(10, (index) => false));
-    cols = List<List<bool>>.generate(81, (index) => List<bool>.generate(10, (index) => false));
-    zones = List<List<bool>>.generate(81, (index) => List<bool>.generate(10, (index) => false));
+    rows = List<List<bool>>.generate(
+        81, (index) => List<bool>.generate(10, (index) => false));
+    cols = List<List<bool>>.generate(
+        81, (index) => List<bool>.generate(10, (index) => false));
+    zones = List<List<bool>>.generate(
+        81, (index) => List<bool>.generate(10, (index) => false));
 
     int row, col, zone;
     this._puzzle.asMap().forEach((int index, int num) {
@@ -34,24 +37,105 @@ class Sudoku {
       }
     });
 
-    bool isSuccess = true;
+    bool isSuccess = false;
     int timeBegin = DateTime.now().millisecondsSinceEpoch;
+    int firstCheckPoint = 0;
     for (int index = 0; index < 81; ++index) {
       if (answer[index] == -1) {
-        isSuccess = _calculate(rows, cols, zones, answer, index);
+        firstCheckPoint = index;
         break;
       }
     }
 
+    if (strict) {
+      // 唯一解模式,多解则抛出错误
+      Map mark = Map.from({"finishes": 0, "answer": null});
+      _dsfOneSolutionCalculate(
+          rows, cols, zones, answer, firstCheckPoint, traceBackNums, mark);
+      int finishes = mark["finishes"];
+      if (finishes > 1) {
+        // 不是唯一解
+        throw StateError("puzzle is not one-solution sudoku");
+      } else if (finishes == 0) {
+        // 数独错误，无法计算
+      } else {
+        // 唯一解
+        answer = mark["answer"];
+        isSuccess = true;
+      }
+    } else {
+      // 回溯模式
+      isSuccess =
+          _backtrackCalculate(rows, cols, zones, answer, firstCheckPoint);
+    }
+
     if (!isSuccess) {
-      throw StateError("数独错误，无法计算");
+      throw StateError("not found the solution. is that you give me the puzzle with mistake?");
     }
 
     this._answer = answer;
     this._timeCount = DateTime.now().millisecondsSinceEpoch - timeBegin;
   }
 
-  bool _calculate(List<List<bool>> rows, List<List<bool>> cols, List<List<bool>> zones, List<int> answer, int index) {
+  _dsfOneSolutionCalculate(
+      List<List<bool>> rows,
+      List<List<bool>> cols,
+      List<List<bool>> zones,
+      List<int> answer,
+      int index,
+      traceBackNums,
+      Map mark) {
+    if (mark["finishes"] > 1) {
+      return;
+    }
+
+    if (index >= 81) {
+      for (int i = 0; i < 81; ++i) {
+        if (answer[i] == -1) {
+          return;
+        }
+      }
+      mark["answer"] = answer;
+      mark["finishes"]++;
+      return;
+    }
+
+    if (answer[index] != -1) {
+      _dsfOneSolutionCalculate(
+          rows, cols, zones, answer, index + 1, traceBackNums, mark);
+      return;
+    }
+
+    int row, col, zone;
+    row = Matrix.getRow(index);
+    col = Matrix.getCol(index);
+    zone = Matrix.getZone(row: row, col: col);
+    for (int num in traceBackNums) {
+      if (!rows[row][num] && !cols[col][num] && !zones[zone][num]) {
+        answer[index] = num;
+        rows[row][num] = true;
+        cols[col][num] = true;
+        zones[zone][num] = true;
+
+        _dsfOneSolutionCalculate(
+            List.from(rows),
+            List.from(cols),
+            List.from(zones),
+            List.from(answer),
+            index + 1,
+            traceBackNums,
+            mark);
+
+        answer[index] = -1;
+        rows[row][num] = false;
+        cols[col][num] = false;
+        zones[zone][num] = false;
+      }
+    }
+  }
+
+  bool _backtrackCalculate(List<List<bool>> rows, List<List<bool>> cols,
+      List<List<bool>> zones, List<int> answer, int index) {
     int row, col, zone;
     row = Matrix.getRow(index);
     col = Matrix.getCol(index);
@@ -60,8 +144,9 @@ class Sudoku {
     if (index >= 81) {
       return true;
     }
+
     if (answer[index] != -1) {
-      return _calculate(rows, cols, zones, answer, index + 1);
+      return _backtrackCalculate(rows, cols, zones, answer, index + 1);
     }
 
     List<int> nums = this.traceBackNums;
@@ -72,7 +157,7 @@ class Sudoku {
         cols[col][num] = true;
         zones[zone][num] = true;
 
-        if (_calculate(rows, cols, zones, answer, index + 1)) {
+        if (_backtrackCalculate(rows, cols, zones, answer, index + 1)) {
           return true;
         } else {
           answer[index] = -1;
@@ -92,7 +177,7 @@ class Sudoku {
     formatPrint(this.puzzle);
     print('answer');
     formatPrint(this.answer);
-    print('解题耗时 : ${this._timeCount}\'ms');
+    print('solve total time : ${this._timeCount}\'ms');
     print('--- debug end ---');
   }
 
@@ -100,5 +185,6 @@ class Sudoku {
 
   List<int> get answer => this._answer;
 
-  static Sudoku generator(sudoku_generator.LEVEL level) => sudoku_generator.generator(level: level);
+  static Sudoku generate(sudoku_generator.LEVEL level) =>
+      sudoku_generator.generate(level: level);
 }
