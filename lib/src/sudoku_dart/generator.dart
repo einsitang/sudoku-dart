@@ -1,23 +1,23 @@
 import 'core.dart';
 import 'tools.dart';
 
-enum LEVEL { EASY, MEDIUM, HARD, EXPERT }
+enum Level { easy, medium, hard, expert }
 
-Sudoku generate({LEVEL level = LEVEL.EASY}) {
+Sudoku generate({Level level = Level.easy}) {
   // level to dig hole count
   int digHoleCount = 40;
   switch (level) {
-    case LEVEL.EASY:
+    case Level.easy:
       digHoleCount = 38;
       break;
-    case LEVEL.MEDIUM:
+    case Level.medium:
       digHoleCount = 45;
       break;
-    case LEVEL.HARD:
+    case Level.hard:
       digHoleCount = 50;
       break;
-    case LEVEL.EXPERT:
-      digHoleCount = 54;
+    case Level.expert:
+      digHoleCount = 56;
       break;
     default:
       break;

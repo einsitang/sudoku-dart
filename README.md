@@ -3,26 +3,41 @@
 
 ## 关于 about
 
- [![License](https://img.shields.io/badge/License-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)[![License](https://img.shields.io/badge/BSD-3-Clause.svg)](https://opensource.org/licenses/BSD-3-Clause)
+ [![License](https://img.shields.io/badge/License-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE) [![License](https://img.shields.io/badge/BSD-3-Clause.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
 数独 **解题器** 和 **生成器** 开源库 `dart` 版
 
 支持对 唯一/非唯一解数独进行解题 以及 唯一解数独随机生成
 
-opensource sudoku solver and puzzle generator `dart` library
+open-source sudoku solver and puzzle generator library with `dart`
 
 ## 安装 install
-### with flutter :
-`flutter pub add sudoku_dart`
 
-### only dart:
-This will add a line like this to your package's `pubspec.yaml`
+### only-dart
+
+Depend on it
+
+Run this command:
+
+With Dart:
+```dart
+dart pub add sudoku_dart
 ```
+
+### with-flutter :
+```dart
+flutter pub add sudoku_dart
+```
+
+This will add a line like this to your package's pubspec.yaml (and run an implicit dart pub get):
+
+```yaml
 dependencies:
-  sudoku_dart: ^1.0.0
+  sudoku_dart: ^1.0.2
 ```
-import
-```
+
+Import it
+```dart
 import 'package:sudoku_dart/sudoku_dart.dart';
 ```
 
@@ -33,7 +48,7 @@ import 'package:sudoku_dart/sudoku_dart.dart';
 import 'package:sudoku_dart/sudoku_dart.dart';
 // 支持数独解题
 // 输入一维数组的puzzle,-1为待填空
-  List<int> puzzle = [
+ List<int> puzzle = [
     -1,-1,8,    9,-1,6,     -1,-1,5,
     -1,4,3,     -1,-1,-1,   -1,2,-1,
     -1,-1,-1,   -1,-1,-1,   -1,-1,-1,
@@ -62,8 +77,8 @@ sudoku.answer;
 ```dart
 import 'package:sudoku_dart/sudoku_dart.dart';
 // generate random puzzle with one-solution
-// LEVEL : EASY(简单), MEDIUM(中等), HARD(困难), EXPERT(专家)
-Sudoku sudoku = Sudoku.generate(LEVEL.EXPERT);
+// Level : easy(简单), medium(中等), hard(困难), expert(专家)
+Sudoku sudoku = Sudoku.generate(Level.expert);
 ```
 
 ## more

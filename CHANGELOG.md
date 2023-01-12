@@ -1,4 +1,9 @@
 # Changelog
+## 1.0.2
+- enhance `Level.expert` difficulty
+- change dart specification
+- detailed document
+- enjoy it
 ## 1.0.1
 -  support null safety
 ## 1.0.0

@@ -24,12 +24,12 @@ class Matrix {
   static int getIndex(int row, int col) => col * 9 + row;
 
   static List<int> getZoneIndexes({int zone = 0}) {
-    List<int> rows = [0, 1, 2];
-    List<int> cols = [0, 1, 2];
     List<int> indexes = [];
 
-    cols.forEach((col) {
-      rows.forEach((row) {
+    // cols
+    [0, 1, 2].forEach((col) {
+      // rows
+      [0, 1, 2].forEach((row) {
         indexes.add(((col + zone ~/ 3 * 3) * 9) + (row + (zone % 3) * 3));
       });
     });
@@ -59,9 +59,6 @@ List shuffle(List list) {
 }
 
 void formatPrint(List<int> arr) {
-  List<List<int>> matrix = [];
-  List<int> rows = [];
-
   int element;
   for (int index = 0; index < arr.length; ++index) {
     element = arr[index];

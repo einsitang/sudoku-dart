@@ -30,7 +30,7 @@ void main() {
 
   // sudo generator with expert level
   int beginTime = DateTime.now().millisecondsSinceEpoch;
-  Sudoku newSudoku = Sudoku.generate(LEVEL.EXPERT);
+  Sudoku newSudoku = Sudoku.generate(Level.expert);
   int endTime = DateTime.now().millisecondsSinceEpoch;
   newSudoku.debug();
   String str = newSudoku.puzzle.join(",");
