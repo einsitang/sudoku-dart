@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:math';
 
 class Matrix {
@@ -42,6 +41,12 @@ class Matrix {
 
   static List<int> getRowIndexes(int row) =>
       List.generate(9, (index) => row * 9 + index);
+
+  static int getIndexByZone(int zone, int indexOfZone) {
+    int x = zone ~/ 3 * 3 + indexOfZone ~/ 3;
+    int y = zone % 3 * 3 + indexOfZone % 3;
+    return x * 9 + y;
+  }
 }
 
 List shuffle(List list) {
@@ -60,15 +65,16 @@ List shuffle(List list) {
 
 void formatPrint(List<int> arr) {
   int element;
+  String out = "";
   for (int index = 0; index < arr.length; ++index) {
     element = arr[index];
     if (index % 9 == 0) {
-      stdout.writeln("\n");
-      if ((index ~/ 9) % 3 == 0) {
-        stdout.writeln();
+      out += "\n\n";
+      if ((index ~/ 9) % 3 == 0 && index != 0) {
+        out += "\n";
       }
     }
-    stdout.write('${element} \t ${(index + 1) % 3 == 0 ? "\t" : ""}');
+    out += '${element} \t ${(index + 1) % 3 == 0 ? "\t" : ""}';
   }
-  stdout.writeln();
+  print(out);
 }

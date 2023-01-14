@@ -1,4 +1,4 @@
-import 'generator.dart' as sudoku_generator;
+import 'generator.dart' as sudokuGenerator;
 import 'tools.dart';
 
 final List<int> _nums = List<int>.generate(9, (index) => index + 1);
@@ -186,6 +186,6 @@ class Sudoku {
 
   List<int> get answer => this._answer;
 
-  static Sudoku generate(sudoku_generator.Level level) =>
-      sudoku_generator.generate(level: level);
+  static Sudoku generate(sudokuGenerator.Level level) =>
+      sudokuGenerator.generate(level: level);
 }

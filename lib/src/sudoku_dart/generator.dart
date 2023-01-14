@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'core.dart';
 import 'tools.dart';
 
@@ -17,7 +19,7 @@ Sudoku generate({Level level = Level.easy}) {
       digHoleCount = 50;
       break;
     case Level.expert:
-      digHoleCount = 56;
+      digHoleCount = 54;
       break;
     default:
       break;
@@ -44,11 +46,16 @@ Sudoku _generate(int digHoleCount) {
 
 Sudoku? _internalGenerate(List<int> digHolePuzzle, int digHoleCount) {
   List<int> candidateIndexes = [];
+  // fixedPosition should each by zone and calculate by random index and sort them
+  Random rand = Random();
   List fixedPositions =
-      shuffle(List.generate(9, (index) => index).cast<int>());
+      List.generate(9, (zone) => Matrix.getIndexByZone(zone, rand.nextInt(9)))
+          .cast<int>();
+
+  fixedPositions.sort();
   for (int i = 0; i < 81; ++i) {
     if (fixedPositions.isNotEmpty && fixedPositions.first == i) {
-      fixedPositions.remove(0);
+      fixedPositions.removeAt(0);
       continue;
     }
     candidateIndexes.add(i);

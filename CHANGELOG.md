@@ -1,4 +1,8 @@
 # Changelog
+## 1.0.3
+- fix generate logic make sure each zone both have less one number
+- adjust expert rollback 1.0.2 difficulty
+- change test file you can use `dart test example/lib/*_test.dart` to use test case
 ## 1.0.2
 - enhance `Level.expert` difficulty
 - change dart specification

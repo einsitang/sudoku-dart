@@ -1,8 +1,10 @@
 name: sudoku_dart
 description: sudoku_dart is open-source sudoku solver and puzzle generator library with `dart`
-version: 1.0.2
+version: 1.0.4
 homepage: https://github.com/einsitang/sudoku-dart
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
+dev_dependencies:
+  test: ^1.22.2
 
