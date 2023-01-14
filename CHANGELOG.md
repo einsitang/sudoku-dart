@@ -1,5 +1,5 @@
 # Changelog
-## 1.0.3
+## 1.0.4
 - fix generate logic make sure each zone both have less one number
 - adjust expert rollback 1.0.2 difficulty
 - change test file you can use `dart test example/lib/*_test.dart` to use test case
