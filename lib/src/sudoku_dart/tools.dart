@@ -51,7 +51,7 @@ class Matrix {
 
 List shuffle(List list) {
   var random = Random();
-  var n, temp;
+  int n, temp;
   for (var i = list.length - 1; i > 0; i--) {
     // Pick a pseudorandom number according to the list length
     n = random.nextInt(i + 1);
@@ -69,12 +69,12 @@ void formatPrint(List<int> arr) {
   for (int index = 0; index < arr.length; ++index) {
     element = arr[index];
     if (index % 9 == 0) {
-      out += "\n\n";
+      out += "\n";
       if ((index ~/ 9) % 3 == 0 && index != 0) {
         out += "\n";
       }
     }
-    out += '${element} \t ${(index + 1) % 3 == 0 ? "\t" : ""}';
+    out += '${element == -1 ? "." : element} ${(index + 1) % 3 == 0 ? "\t" : ""}';
   }
   print(out);
 }

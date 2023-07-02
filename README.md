@@ -3,7 +3,9 @@
 
 ## 关于 about
 
- [![License](https://img.shields.io/badge/License-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE) [![License](https://img.shields.io/badge/BSD-3-Clause.svg)](https://opensource.org/licenses/BSD-3-Clause)
+ [![License](https://img.shields.io/badge/License-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE) 
+ [![License](https://img.shields.io/badge/BSD-3-Clause.svg)](https://opensource.org/licenses/BSD-3-Clause)
+ ![pub package](https://img.shields.io/pub/v/sudoku_dart.svg)
 
 数独 **解题器** 和 **生成器** 开源库 `dart` 版
 
@@ -33,7 +35,7 @@ This will add a line like this to your package's pubspec.yaml (and run an implic
 
 ```yaml
 dependencies:
-  sudoku_dart: ^1.0.4
+  sudoku_dart: ^1.1.0
 ```
 
 Import it
@@ -63,14 +65,16 @@ import 'package:sudoku_dart/sudoku_dart.dart';
   ];
 
 sudoku = Sudoku(puzzle);
+
 // if you need check this puzzle is one-solution sudoku or not,use  strict:true 
 // sudoku = Sudoku(puzzle, strict: true);
-// 打印调试信息
+
+// debug print
 sudoku.debug();
 // origin puzzle
 sudoku.puzzle;
-// full answer sudoku
-sudoku.answer;
+// sudoku solution
+sudoku.solution;
 ```
 
 ### 随机生成数独 generator

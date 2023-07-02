@@ -1,4 +1,9 @@
 # Changelog
+## 1.1.0
+- amend api
+- optimize format print
+- automatic difficulty adjustment
+  - `sudoku_dart` is run on client side , don't want generate puzzle take long time
 ## 1.0.4
 - fix generate logic make sure each zone both have less one number
 - adjust expert rollback 1.0.2 difficulty

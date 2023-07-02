@@ -54,7 +54,7 @@ class Sudoku {
           rows, cols, zones, answer, firstCheckPoint, traceBackNums, mark);
       int finishes = mark["finishes"];
       if (finishes > 1) {
-        // 不是唯一解
+        // 不是唯一解 not on-solution
         throw StateError("puzzle is not one-solution sudoku");
       } else if (finishes == 0) {
         // 数独错误，无法计算
@@ -176,15 +176,20 @@ class Sudoku {
     print('--- debug info ---');
     print('puzzle');
     formatPrint(this.puzzle);
-    print('answer');
-    formatPrint(this.answer);
+    print('solution');
+    formatPrint(this.solution);
     print('solve total time : ${this._timeCount}\'ms');
     print('--- debug end ---');
   }
 
   List<int> get puzzle => this._puzzle;
 
+  @Deprecated("seem answer is not explicit api , change use solution")
   List<int> get answer => this._answer;
+
+  List<int> get solution => this._answer;
+
+  int get timeCount => this._timeCount;
 
   static Sudoku generate(sudokuGenerator.Level level) =>
       sudokuGenerator.generate(level: level);

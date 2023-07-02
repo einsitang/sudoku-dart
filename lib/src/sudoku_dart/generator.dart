@@ -41,7 +41,12 @@ Sudoku _generate(int digHoleCount) {
   }
   Sudoku sudoku = new Sudoku(simplePuzzle);
   Sudoku? generatedSudoku = _internalGenerate(sudoku.answer, digHoleCount);
-  return generatedSudoku != null ? generatedSudoku : _generate(digHoleCount);
+  if(generatedSudoku != null){
+    return generatedSudoku;
+  }
+  // reduce the difficulty
+  print("reduce the difficulty ${digHoleCount} => ${digHoleCount - 2}");
+  return _generate(digHoleCount - 2);
 }
 
 Sudoku? _internalGenerate(List<int> digHolePuzzle, int digHoleCount) {
