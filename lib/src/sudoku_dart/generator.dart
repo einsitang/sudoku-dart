@@ -40,7 +40,7 @@ Sudoku _generate(int digHoleCount) {
     }
   }
   Sudoku sudoku = new Sudoku(simplePuzzle);
-  Sudoku? generatedSudoku = _internalGenerate(sudoku.answer, digHoleCount);
+  Sudoku? generatedSudoku = _internalGenerate(sudoku.solution, digHoleCount);
   if(generatedSudoku != null){
     return generatedSudoku;
   }
