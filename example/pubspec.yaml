@@ -1,7 +1,7 @@
-name: sudoku-dart-example
+name: sudoku_dart_example
 description: sudoku-dart example
 version: 0.0.1+1
 homepage: https://github.com/einsitang/sudoku-dart
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"

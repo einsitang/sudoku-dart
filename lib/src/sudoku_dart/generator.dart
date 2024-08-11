@@ -19,7 +19,7 @@ Sudoku generate({Level level = Level.easy}) {
       digHoleCount = 50;
       break;
     case Level.expert:
-      digHoleCount = 54;
+      digHoleCount = 55;
       break;
     default:
       break;
@@ -41,7 +41,7 @@ Sudoku _generate(int digHoleCount) {
   }
   Sudoku sudoku = new Sudoku(simplePuzzle);
   Sudoku? generatedSudoku = _internalGenerate(sudoku.solution, digHoleCount);
-  if(generatedSudoku != null){
+  if (generatedSudoku != null) {
     return generatedSudoku;
   }
   // reduce the difficulty
@@ -50,13 +50,19 @@ Sudoku _generate(int digHoleCount) {
 }
 
 Sudoku? _internalGenerate(List<int> digHolePuzzle, int digHoleCount) {
-  List<int> candidateIndexes = [];
+  List<int> candidateIndexes;
   // fixedPosition should each by zone and calculate by random index and sort them
   Random rand = Random();
   List fixedPositions =
       List.generate(9, (zone) => Matrix.getIndexByZone(zone, rand.nextInt(9)))
           .cast<int>();
 
+  // candidateIndexes = List.generate(81,(idx)=>idx);
+  // for(final (i,fixedPosition) in fixedPositions.indexed){
+  //   candidateIndexes.removeAt(fixedPosition-i);
+  // }
+
+  candidateIndexes = [];
   fixedPositions.sort();
   for (int i = 0; i < 81; ++i) {
     if (fixedPositions.isNotEmpty && fixedPositions.first == i) {

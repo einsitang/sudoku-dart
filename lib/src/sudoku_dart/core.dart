@@ -184,9 +184,6 @@ class Sudoku {
 
   List<int> get puzzle => this._puzzle;
 
-  @Deprecated("seem answer is not explicit api , change use solution")
-  List<int> get answer => this._answer;
-
   List<int> get solution => this._answer;
 
   int get timeCount => this._timeCount;

@@ -1,4 +1,6 @@
 # Changelog
+## 1.2.0
+- version-dependent update
 ## 1.1.0
 - amend api
 - optimize format print

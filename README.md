@@ -9,7 +9,7 @@
 
 数独 **解题器** 和 **生成器** 开源库 `dart` 版
 
-支持对 唯一/非唯一解数独进行解题 以及 唯一解数独随机生成
+支持对 唯一/非唯一解数独进行解题 以及 随机唯一解数独生成
 
 open-source sudoku solver and puzzle generator library with `dart`
 
@@ -35,7 +35,7 @@ This will add a line like this to your package's pubspec.yaml (and run an implic
 
 ```yaml
 dependencies:
-  sudoku_dart: ^1.1.0
+  sudoku_dart: ^1.2.0
 ```
 
 Import it
@@ -77,7 +77,7 @@ sudoku.puzzle;
 sudoku.solution;
 ```
 
-### 随机生成数独 generator
+### 数独生成器 generator
 ```dart
 import 'package:sudoku_dart/sudoku_dart.dart';
 // generate random puzzle with one-solution

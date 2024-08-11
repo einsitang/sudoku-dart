@@ -74,7 +74,8 @@ void formatPrint(List<int> arr) {
         out += "\n";
       }
     }
-    out += '${element == -1 ? "." : element} ${(index + 1) % 3 == 0 ? "\t" : ""}';
+    out +=
+        '${element == -1 ? "." : element} ${(index + 1) % 3 == 0 ? "\t" : ""}';
   }
   print(out);
 }
