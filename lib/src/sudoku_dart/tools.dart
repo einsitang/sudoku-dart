@@ -20,7 +20,7 @@ class Matrix {
     return y * 3 + x;
   }
 
-  static int getIndex(int row, int col) => col * 9 + row;
+  static int getIndex(int row, int col) => row * 9 + col;
 
   static List<int> getZoneIndexes({int zone = 0}) {
     List<int> indexes = [];
